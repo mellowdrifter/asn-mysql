@@ -8,12 +8,12 @@ import urllib2
 import ConfigParser
 
 url = 'http://bgp.potaroo.net/cidr/autnums.html'
-already, new, changed = 0, 0, 0
+new = 0
 today = time.strftime("%Y-%m-%d")
 db_name = Config.get('database', 'db_name')
 db_user  = Config.get('database', 'db_user')
 db_password = Config.get('database', 'db_password')
-db_name = Config.get('database', 'db_location')
+db_location = Config.get('database', 'db_location')
 
 print "Downloading"
 content = urllib2.urlopen(url).read()
@@ -22,7 +22,7 @@ print "Download complete"
 
 as_list = new_list = re.findall(r'AS(\d+)\s*</a> (.*),(.{2})', content)
 
-db = MySQLdb.connect("localhost", "asnuser", "password", "AS_NUM_NAME")
+db = MySQLdb.connect(location, db_user, db_password, db_name)
 cursor = db.cursor()
 
 def create_sql(multicreate):
