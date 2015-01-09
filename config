@@ -1,5 +1,5 @@
 [database]
 db_name = ''
 db_user = ''
-db_password = ''
+db_password = 'password'
 db_location = 'localhost'
