@@ -5,15 +5,18 @@ import sys
 import time
 import re
 import urllib2
-from datetime import datetime
-
-startTime = datetime.now()
+import ConfigParser
 
 url = 'http://bgp.potaroo.net/cidr/autnums.html'
-print "Downloading"
-content = urllib2.urlopen(url).read()
 already, new, changed = 0, 0, 0
 today = time.strftime("%Y-%m-%d")
+db_name = Config.get('database', 'db_name')
+db_user  = Config.get('database', 'db_user')
+db_password = Config.get('database', 'db_password')
+db_name = Config.get('database', 'db_location')
+
+print "Downloading"
+content = urllib2.urlopen(url).read()
 
 print "Download complete"
 
@@ -36,5 +39,4 @@ with db:
     print "Checked, updataing now..."
     create_sql(multicreate)
 
-print datetime.now() - startTime
 print "New AS: " + str(new)
