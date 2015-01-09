@@ -37,6 +37,7 @@ with db:
     multicreate = []
     print "Checking..."
     for AS in as_list:
+        new += 1
         multicreate.append((int(AS[0].strip()), AS[1].strip(), AS[2].strip(), 0, today))
     print "Checked, updataing now..."
     create_sql(multicreate)
