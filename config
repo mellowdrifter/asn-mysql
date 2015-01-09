@@ -1,5 +1,0 @@
-[database]
-db_name = 'AS-NUM-NAME'
-db_user = 'asn_user'
-db_password = ''
-db_location = 'localhost'
