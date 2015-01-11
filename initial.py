@@ -22,7 +22,7 @@ content = urllib2.urlopen(url).read()
 
 print "Download complete"
 
-as_list = new_list = re.findall(r'AS(\d+)\s*</a> (.*),(.{2})', content)
+as_list = re.findall(r'AS(\d+)\s*</a> (.*),(.{2})', content)
 
 db = MySQLdb.connect(db_location, db_user, db_password, db_name)
 cursor = db.cursor()
